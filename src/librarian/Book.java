@@ -92,9 +92,9 @@ public class Book {
 	                checkBook(); // 도서 대여반납
 	                break;
 	            
-	            case("5"):		
-	            	manageUser();	// 회원관리
-	            	break;
+//	            case("5"):		
+//	            	manageUser();	// 회원관리
+//	            	break;
 	                
 	            case ("0"):
 	                System.out.println("프로그램 종료");
@@ -243,137 +243,137 @@ public class Book {
 	        } // end while
 	    }
 
-	    public void manageUser() throws InterruptedException {
-	    	while (true) {
-	            System.out.println("<<사서 로그인 中...>> 회원관리");
-	            System.out.println("[1] 일반회원 정보조회\t [2] 일반회원 정보수정 \t [3] 회원정보 폐기\t [0] 종료");
-	            String userInput = sc.nextLine();
-	            switch (userInput) {
-	            case ("1"):
-	                printUserList(); // 회원리스트 출력
-	                break;
-	     
-	            case ("2"):
-	                userUpdate(); // 회원정보 수정
-	                break;
-	                
-	            case ("3"):
-	                userDelete(); // 회원정보 삭제
-	                break;
-	            }
-	    	}//end while
-	    }//end manageUser
-	    
-	    public void printUserList() throws InterruptedException{
-	    	while(true) {
-	    		System.out.println("======회원가입 명단======");
-	    		System.out.println("전체 인원수 : " + list.size());
-	    		for (UserVO vo : list) {
-	    			System.out.print(vo.getName() + "\t");
-	    			System.out.print(vo.getBirth() + "\t");
-	    			System.out.print(vo.getId() + "\t");
-	    			System.out.print(vo.getPwd() + "\t");
-	    			System.out.print(vo.getPhone() + "\n");
-	    			
-	    		}
-	    		System.out.println();
-	    		
-	    	}
-	    	
-	    	public void userUpdate() {									
-	    		if (uservo == null) {
-	    			System.out.println("\n로그인이 필요 합니다.");
-	    			return;
-	    		}
-
-	    		System.out.println("\n회원 정보 수정...");
-
-	    		try {
-	    			UserVO vo = readUser(uservo.getId());
-
-	    			System.out.print("패스워드를 다시 입력 하세요 ? ");
-	    			String pwd = br.readLine();
-
-	    			if (!vo.getPwd().equals(pwd)) {
-	    				System.out.println("패스워드가 일치하지 않습니다.\n");
-	    				return;
-	    			}
-
-	    			System.out.print("수정할 패스워드 ? ");
-	    			vo.setPwd(br.readLine());
-
-	    			System.out.print("수정할 폰번호? ");
-	    			vo.setPhone(br.readLine());
-
-	    			System.out.println("회원 정보를 수정했습니다.\n");
-
-	    		} catch (Exception e) {
-	    			System.out.println(e.toString());
-	    		}
-	    }
-	    	
-	    	public void userDelete() {									
-	    		
-	    		UserVO vo1=readUser(uservo.getId());
-	    		UserVO vo2=readUser("admin");
-	    		
-	    		try {
-	    			if(uservo.getId()!="admin") {
-	    				System.out.println("\n회원 탈퇴");
-	    				
-	    				System.out.print("패스워드를 다시 입력 하세요 ? ");
-	    				String pwd = br.readLine();
-	    				
-	    				if(! vo1.getPwd().equals(pwd)) {
-	    					System.out.println("패스워드가 일치하지 않습니다.\n");
-	    					return;
-	    				}
-	    				
-	    			} else if (uservo.getId()=="admin") {
-	    				System.out.println("\n회원 삭제");
-	    				
-	    				System.out.println("삭제할 아이디? ");
-	    				vo1=readUser(br.readLine());
-	    				if (vo1==null) {
-	    					System.out.println("아이디가 존재하지 않습니다.");
-	    					return;
-	    				}
-	    				System.out.print(vo1.getId()+"\t");
-	    				System.out.print(vo1.getName()+"\t");
-	    				System.out.print(vo1.getPhone()+"\t\n");
-	    				System.out.println("삭제할 아이디가 맞나요? [Y/N] ");
-	    				String s1 = br.readLine();
-	    				
-	    				if (s1.equals("Y") || s1.equals("y") ) {
-	    					System.out.print("관리자 패스워드를 입력 하세요 ? ");
-	    					String pwd = br.readLine();
-	    					
-	    					if(! vo2.getPwd().equals(pwd)) {
-	    						System.out.println("패스워드가 일치하지 않습니다.\n");
-	    						return;
-	    					}
-	    					
-	    				} else {
-	    					System.out.println("삭제를 취소합니다.");
-	    					return;
-	    				}
-	    			}
-	    			
-	    			list.remove(vo1);
-	    			
-	    			if(uservo.getId()!="admin") {
-	    				System.out.println("회원탈퇴가 처리 되었습니다.\n");
-	    			} else {
-	    				System.out.println("회원삭제가 처리 되었습니다.\n");
-	    			}
-	    			
-	    		} catch (Exception e) {
-	    			System.out.println(e.toString());
-	    		}
-	    		
-	    		uservo = null;
-	    	}
-	    
+//	    public void manageUser() throws InterruptedException {
+//	    	while (true) {
+//	            System.out.println("<<사서 로그인 中...>> 회원관리");
+//	            System.out.println("[1] 일반회원 정보조회\t [2] 일반회원 정보수정 \t [3] 회원정보 폐기\t [0] 종료");
+//	            String userInput = sc.nextLine();
+//	            switch (userInput) {
+//	            case ("1"):
+//	                printUserList(); // 회원리스트 출력
+//	                break;
+//	     
+//	            case ("2"):
+//	                userUpdate(); // 회원정보 수정
+//	                break;
+//	                
+//	            case ("3"):
+//	                userDelete(); // 회원정보 삭제
+//	                break;
+//	            }
+//	    	}//end while
+//	    }//end manageUser
+//	    
+//	    public void printUserList() throws InterruptedException{
+//	    	while(true) {
+//	    		System.out.println("======회원가입 명단======");
+//	    		System.out.println("전체 인원수 : " + list.size());
+//	    		for (UserVO vo : list) {
+//	    			System.out.print(vo.getName() + "\t");
+//	    			System.out.print(vo.getBirth() + "\t");
+//	    			System.out.print(vo.getId() + "\t");
+//	    			System.out.print(vo.getPwd() + "\t");
+//	    			System.out.print(vo.getPhone() + "\n");
+//	    			
+//	    		}
+//	    		System.out.println();
+//	    		
+//	    	}
+//	    	
+//	    	public void userUpdate() {									
+//	    		if (uservo == null) {
+//	    			System.out.println("\n로그인이 필요 합니다.");
+//	    			return;
+//	    		}
+//
+//	    		System.out.println("\n회원 정보 수정...");
+//
+//	    		try {
+//	    			UserVO vo = readUser(uservo.getId());
+//
+//	    			System.out.print("패스워드를 다시 입력 하세요 ? ");
+//	    			String pwd = br.readLine();
+//
+//	    			if (!vo.getPwd().equals(pwd)) {
+//	    				System.out.println("패스워드가 일치하지 않습니다.\n");
+//	    				return;
+//	    			}
+//
+//	    			System.out.print("수정할 패스워드 ? ");
+//	    			vo.setPwd(br.readLine());
+//
+//	    			System.out.print("수정할 폰번호? ");
+//	    			vo.setPhone(br.readLine());
+//
+//	    			System.out.println("회원 정보를 수정했습니다.\n");
+//
+//	    		} catch (Exception e) {
+//	    			System.out.println(e.toString());
+//	    		}
+//	    }
+//	    	
+//	    	public void userDelete() {									
+//	    		
+//	    		UserVO vo1=readUser(uservo.getId());
+//	    		UserVO vo2=readUser("admin");
+//	    		
+//	    		try {
+//	    			if(uservo.getId()!="admin") {
+//	    				System.out.println("\n회원 탈퇴");
+//	    				
+//	    				System.out.print("패스워드를 다시 입력 하세요 ? ");
+//	    				String pwd = br.readLine();
+//	    				
+//	    				if(! vo1.getPwd().equals(pwd)) {
+//	    					System.out.println("패스워드가 일치하지 않습니다.\n");
+//	    					return;
+//	    				}
+//	    				
+//	    			} else if (uservo.getId()=="admin") {
+//	    				System.out.println("\n회원 삭제");
+//	    				
+//	    				System.out.println("삭제할 아이디? ");
+//	    				vo1=readUser(br.readLine());
+//	    				if (vo1==null) {
+//	    					System.out.println("아이디가 존재하지 않습니다.");
+//	    					return;
+//	    				}
+//	    				System.out.print(vo1.getId()+"\t");
+//	    				System.out.print(vo1.getName()+"\t");
+//	    				System.out.print(vo1.getPhone()+"\t\n");
+//	    				System.out.println("삭제할 아이디가 맞나요? [Y/N] ");
+//	    				String s1 = br.readLine();
+//	    				
+//	    				if (s1.equals("Y") || s1.equals("y") ) {
+//	    					System.out.print("관리자 패스워드를 입력 하세요 ? ");
+//	    					String pwd = br.readLine();
+//	    					
+//	    					if(! vo2.getPwd().equals(pwd)) {
+//	    						System.out.println("패스워드가 일치하지 않습니다.\n");
+//	    						return;
+//	    					}
+//	    					
+//	    				} else {
+//	    					System.out.println("삭제를 취소합니다.");
+//	    					return;
+//	    				}
+//	    			}
+//	    			
+//	    			list.remove(vo1);
+//	    			
+//	    			if(uservo.getId()!="admin") {
+//	    				System.out.println("회원탈퇴가 처리 되었습니다.\n");
+//	    			} else {
+//	    				System.out.println("회원삭제가 처리 되었습니다.\n");
+//	    			}
+//	    			
+//	    		} catch (Exception e) {
+//	    			System.out.println(e.toString());
+//	    		}
+//	    		
+//	    		uservo = null;
+//	    	}
+//	    
 	                
 	                
 	                
