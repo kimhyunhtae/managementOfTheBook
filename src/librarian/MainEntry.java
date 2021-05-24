@@ -1,4 +1,4 @@
-package generalMember;
+package librarian;
 
 public class MainEntry {
     public static void main(String[] args) throws InterruptedException {
